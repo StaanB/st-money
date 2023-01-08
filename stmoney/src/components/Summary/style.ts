@@ -34,12 +34,4 @@ export const Container = styled.div`
   svg {
     font-size: 1.5rem;
   }
-
-  .green {
-    color: var(--green);
-  }
-
-  .red {
-    color: var(--red);
-  }
 `;

@@ -1,36 +1,36 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-    background: var(--black);
-`
+  background: var(--black);
+`;
 
 export const Content = styled.div`
-    max-width: 1120px;
-    margin: 0 auto;
+  max-width: 1120px;
+  margin: 0 auto;
 
-    padding: 1rem 1rem 12rem;
+  padding: 1rem 1rem 12rem;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    button{
-        font-size: 1rem;
-        color: #fff;
-        background-color: var(--black-light);
-        border: 0;
-        padding: 0 2rem;
-        border-radius: 0.25rem;
-        height: 3rem;
+  button {
+    font-size: 1rem;
+    color: #fff;
+    background-color: var(--black-light);
+    border: 0;
+    padding: 0 2rem;
+    border-radius: 0.25rem;
+    height: 3rem;
 
-        transition: filter 0.2s;
+    transition: filter 0.2s;
 
-        &:hover {
-            filter: brightness(0.9);
-        }
+    &:hover {
+      filter: brightness(0.9);
     }
+  }
 
-    img{
-        width: 10rem;
-    }
-`
+  img {
+    width: 10rem;
+  }
+`;
