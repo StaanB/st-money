@@ -1,11 +1,34 @@
+import { useContext } from "react";
 import { Container } from "./style";
 import {
   BsArrowUpCircle,
   BsArrowDownCircle,
   BsCurrencyDollar,
 } from "react-icons/bs";
+import { useTransactions } from "../hooks/useTransactions";
 
 export function Summary() {
+  const { transactions } = useTransactions();
+
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === "deposit") {
+        acc.deposits += transaction.amount;
+        acc.total += transaction.amount;
+      } else {
+        acc.withdraw += transaction.amount;
+        acc.total -= transaction.amount;
+      }
+
+      return acc;
+    },
+    {
+      deposits: 0,
+      withdraw: 0,
+      total: 0,
+    }
+  );
+
   return (
     <Container>
       <div>
@@ -13,7 +36,12 @@ export function Summary() {
           <p>Entradas</p>
           <BsArrowUpCircle className="green" />
         </header>
-        <strong>R$1000,00</strong>
+        <strong>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.deposits)}
+        </strong>
       </div>
 
       <div>
@@ -21,7 +49,12 @@ export function Summary() {
           <p>Saídas</p>
           <BsArrowDownCircle className="red" />
         </header>
-        <strong>- R$500,00</strong>
+        <strong>
+          -{new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.withdraw)}
+        </strong>
       </div>
 
       <div className="highlight-background">
@@ -29,7 +62,12 @@ export function Summary() {
           <p>Total</p>
           <BsCurrencyDollar />
         </header>
-        <strong>R$1000,00</strong>
+        <strong>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          }).format(summary.total)}
+        </strong>
       </div>
     </Container>
   );
